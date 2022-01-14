@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onClick="setCookie()">Set Cookie</button>
+    <button onClick="getCookie()">Get Cookie</button>
+    <script>
+      const api = "https://express-brown.vercel.app";
+
+      function setCookie() {
+        fetch(api + "/setcookie", {
+          method: "get",
+          credentials: "include",
+        }).then((data) => {
+          const cookie = document.cookie;
+
+          console.log("cookie: ", cookie);
+        });
+      }
+      function getCookie() {
+        fetch(api + "/getcookie", {
+          method: "get",
+          credentials: "include",
+        }).then((data) => {
+          const cookie = document.cookie;
+
+          console.log("cookie: ", cookie);
+        });
+      }
+    </script>
+  </body>
+</html>
