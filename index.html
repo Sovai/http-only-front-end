@@ -9,18 +9,20 @@
   <body>
     <button onClick="setCookie()">Set Cookie</button>
     <button onClick="getCookie()">Get Cookie</button>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       const api = "https://express-brown.vercel.app";
 
       function setCookie() {
-        fetch(api + "/setcookie", {
-          method: "get",
-          credentials: "include",
-        }).then((data) => {
-          const cookie = document.cookie;
+        axios
+          .get(api + "/setcookie", {
+            withCredential: true,
+          })
+          .then((data) => {
+            const cookie = document.cookie;
 
-          console.log("cookie: ", cookie);
-        });
+            console.log("cookie: ", cookie);
+          });
       }
       function getCookie() {
         fetch(api + "/getcookie", {
